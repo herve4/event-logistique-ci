@@ -5,6 +5,10 @@ from django.contrib.auth.password_validation import validate_password
 from accounts.models import User
 
 
+
+
+
+
 class SignInForm(forms.Form):
     email = forms.EmailField(widget=forms.EmailInput(attrs={"class": "form-control"}))
     password = forms.CharField(

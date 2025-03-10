@@ -77,12 +77,12 @@ WSGI_APPLICATION = "eventcalendar.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
-DATABASES = {
+"""DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.sqlite3",
         "NAME": os.path.join(BASE_DIR, "db.sqlite3"),
     }
-}
+}"""
 
 """
 ##CONECTAR CON POSTGRES
@@ -98,7 +98,21 @@ DATABASES = {
     }
 }
 
+
+
 """
+from decouple import config
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': config('DB_NAME'),
+        'USER': config('DB_USER'),
+        'PASSWORD': config('DB_PASSWORD'),
+        'HOST': config('DB_HOST'),
+        'PORT': config('DB_PORT', default=3306, cast=int),
+    }
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
@@ -118,7 +132,7 @@ AUTH_USER_MODEL = "accounts.User"
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/
 
-LANGUAGE_CODE = "en-us"
+LANGUAGE_CODE = "fr-FR"
 
 TIME_ZONE = "UTC"
 

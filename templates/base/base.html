@@ -2,7 +2,7 @@
 <html lang="en">
     {% load static %}
     <head>
-        <meta name="description" content="Event Dashboard" />
+        <meta name="description" content="Logistique CI Dashboard" />
         <!-- Twitter meta-->
         <meta property="twitter:card" content="summary_large_image" />
         <meta property="twitter:site" content="@sajib1066" />
@@ -13,7 +13,7 @@
         <meta property="og:title" content="Vali - Free Bootstrap 4 admin theme" />
         <meta property="og:url" content="https://sajib1066.github.io/" />
         <meta property="og:image" content="https://sajib1066.github.io/images/me.jpg" />
-        <meta property="og:description" content="Event Dashboard" />
+        <meta property="og:description" content="Logistique CI" />
         <title>{% block title %}{% endblock title  %}</title>
         <meta charset="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -28,7 +28,7 @@
     <body class="app sidebar-mini">
         <!-- Navbar-->
         <header class="app-header">
-            <a class="app-header__logo" href="{% url 'calendarapp:calendar' %}">Event Calendar</a>
+            <a class="app-header__logo" href="{% url 'calendarapp:dash' %}">Logistique CI</a>
             <!-- Sidebar toggle button-->
             <a class="app-sidebar__toggle" href="#" data-toggle="sidebar" aria-label="Hide Sidebar"></a>
             <!-- Navbar Right Menu-->
@@ -126,7 +126,7 @@
                             <a class="dropdown-item" href="#"><i class="fa fa-user fa-lg"></i> Profile</a>
                         </li> -->
                         <li>
-                            <a class="dropdown-item" href="{% url 'accounts:signout' %}"><i class="fa fa-sign-out fa-lg"></i> Sign Out</a>
+                            <a class="dropdown-item" href="{% url 'accounts:signout' %}"><i class="fa fa-sign-out fa-lg"></i> Se déconnecter</a>
                         </li>
                     </ul>
                 </li>
@@ -144,25 +144,53 @@
             </div> -->
             <ul class="app-menu">
                 <li>
-                    <a class="app-menu__item" href="{% url 'dashboard' %}"><i class="app-menu__icon fa fa-dashboard"></i><span class="app-menu__label">Dashboard</span></a>
+                    <a class="app-menu__item" href="{% url 'dashboard' %}"><i class="app-menu__icon fa fa-dashboard"></i><span class="app-menu__label">Tableau de bord</span></a>
                 </li>
-                <li>
-                    <a class="app-menu__item" href="{% url 'calendarapp:calendar' %}"><i class="app-menu__icon fa fa-calendar"></i><span class="app-menu__label">Calendar</span></a>
+                 <li>
+                    <a class="app-menu__item" href="{% url 'villes' %}"><i class="app-menu__icon fa fa-dashboard"></i><span class="app-menu__label">Ville</span></a>
                 </li>
                 <li class="treeview">
-                    <a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-th-list"></i><span class="app-menu__label">Events</span><i class="treeview-indicator fa fa-angle-right"></i></a>
+                    <a class="app-menu__item" href="{% url 'calendarapp:logisticiens' %}" data-toggle="treeview"><i class="app-menu__icon fa fa-th-list"></i><span class="app-menu__label">Logisticiens</span><i class="treeview-indicator fa fa-angle-right"></i></a>
                     <ul class="treeview-menu">
                         <li>
-                            <a class="treeview-item" href="{% url 'calendarapp:running_events' %}"><i class="icon fa fa-circle-o"></i> Running</a>
+                            <a class="treeview-item" href="{% url 'ajout-responsable' %}"><i class="icon fa fa-circle-o"></i>Ajouter un responsable</a>
                         </li>
                         <li>
-                            <a class="treeview-item" href="{% url 'calendarapp:upcoming_events' %}"><i class="icon fa fa-circle-o"></i> Upcoming</a>
+                            <a class="treeview-item" href="{% url 'ajout-membre' %}"><i class="icon fa fa-circle-o"></i>Ajouter un membre</a>
                         </li>
                         <li>
-                            <a class="treeview-item" href="{% url 'calendarapp:completed_events' %}"><i class="icon fa fa-circle-o"></i> Completed</a>
+                            <a class="treeview-item" href="{% url 'users' %}"><i class="icon fa fa-circle-o"></i>Liste des Responsables</a>
                         </li>
                         <li>
-                            <a class="treeview-item" href="{% url 'calendarapp:all_events' %}"><i class="icon fa fa-circle-o"></i> All</a>
+                            <a class="treeview-item" href="{% url 'membres' %}"><i class="icon fa fa-circle-o"></i> Liste des membres</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="treeview">
+                    <a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-th-list"></i><span class="app-menu__label">Matériels de Logistique</span><i class="treeview-indicator fa fa-angle-right"></i></a>
+                    <ul class="treeview-menu">
+                        <li>
+                            <a class="treeview-item" href="{% url 'calendarapp:materiel' %}"><i class="icon fa fa-circle-o"></i>Ajouter un matériel</a>
+                        </li>
+                        <li>
+                            <a class="treeview-item" href="{% url 'calendarapp:add-cat' %}"><i class="icon fa fa-circle-o"></i>Nouvelle catégorie </a>
+                        </li>
+                        <li>
+                            <a class="treeview-item" href="{% url 'calendarapp:materiels-logistique' %}"><i class="icon fa fa-circle-o"></i>Liste de matériel</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="treeview">
+                    <a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-th-list"></i><span class="app-menu__label">Eglises</span><i class="treeview-indicator fa fa-angle-right"></i></a>
+                    <ul class="treeview-menu">
+                        <li>
+                            <a class="treeview-item" href="{% url 'ajout-responsable' %}"><i class="icon fa fa-circle-o"></i>Ajouter une église</a>
+                        </li>
+                        <li>
+                            <a class="treeview-item" href="{% url 'ajout-responsable' %}"><i class="icon fa fa-circle-o"></i>Liste des responsables</a>
+                        </li>
+                        <li>
+                            <a class="treeview-item" href="{% url 'ajout-responsable' %}"><i class="icon fa fa-circle-o"></i> Liste des églises</a>
                         </li>
                     </ul>
                 </li>
@@ -183,5 +211,31 @@
         {% include 'base/js.html' %}
         {% block extrascripts %}
         {% endblock extrascripts %}
+    
+        <script>
+        // Récupérer les éléments de la modal
+        var modal = document.getElementById("myModal");
+        var openModalBtn = document.getElementById("openModalBtn");
+        var closeModalBtn = document.getElementsByClassName("close")[0];
+
+        // Ouvrir la modal lorsqu'on clique sur le bouton
+        openModalBtn.onclick = function() {
+            modal.style.display = "block";
+        }
+
+        // Fermer la modal lorsque l'utilisateur clique sur la croix
+        closeModalBtn.onclick = function() {
+            modal.style.display = "none";
+        }
+
+        // Fermer la modal si l'utilisateur clique en dehors de la fenêtre modale
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+
+       
+    </script>
     </body>
 </html>

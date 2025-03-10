@@ -179,3 +179,5 @@ def next_day(request, event_id):
         return JsonResponse({'message': 'Sucess!'})
     else:
         return JsonResponse({'message': 'Error!'}, status=400)
+
+

@@ -14,8 +14,13 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
+from django.conf import settings
+from django.conf.urls.static import static
 from django.urls import path, include
 
+from calendarapp.views.event_list import VillesListView, MembresListView, ResponsablesListView, \
+    CompletedEventsListView, AllEventsListView, AjoutResponsableLogistiqueView, \
+    AjoutMembreLogistiqueView, UsersListView
 from .views import DashboardView
 
 
@@ -23,5 +28,41 @@ urlpatterns = [
     path("", DashboardView.as_view(), name="dashboard"),
     path("admin/", admin.site.urls),
     path("accounts/", include("accounts.urls")),
-    path("", include("calendarapp.urls")),
-]
+    path("calendrier/", include("calendarapp.urls")),
+    path(
+          "villes/",
+          VillesListView.as_view(),
+          name="villes",
+        ),
+    path(
+          "membres/",
+          MembresListView.as_view(),
+          name="membres",
+        ),
+    path(
+          "responsables/",
+          ResponsablesListView.as_view(),
+          name="responsables",
+        ),
+    path("all-event-list/", AllEventsListView.as_view(), name="all_events"),
+    path(
+        "Ajouter-un-responsable/",
+        AjoutResponsableLogistiqueView.as_view(),
+        name="ajout-responsable",
+    ),
+    path(
+        "Ajouter-un-membre/",
+        AjoutMembreLogistiqueView.as_view(),
+        name="ajout-membre",
+    ),
+    path(
+        "completed-event-list/",
+        CompletedEventsListView.as_view(),
+        name="completed_events",
+    ),
+    path(
+        "utilisateurs/",
+        UsersListView.as_view(),
+        name="users",
+    ),
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
